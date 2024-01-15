@@ -27,3 +27,5 @@ jobs:
           -Dsonar.projectKey=power_pipe_123
           -Dsonar.projectName=power_pipe
           -Dsonar.qualitygate.wait=true
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          -Dsonar.qualitygate.wait=true
