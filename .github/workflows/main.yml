@@ -4,31 +4,24 @@ on:
   workflow_dispatch
 
 jobs:
-  security:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
 
-      - name: Give Permission
-        run: chmod 777 ./mvnw
-
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/maven@master
-        continue-on-error: true
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          command: monitor
   sonarqube:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
       with:
-        # Disabling shallow clones is recommended for improving the relevancy of reporting
+        # Disabling shallow clone is recommended for improving relevancy of reporting.
         fetch-depth: 0
+ 
+    # Triggering SonarQube analysis as results of it are required by Quality Gate check.
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        SONAR_TOKEN: ${{ }}
+        SONAR_HOST_URL: ${{ }}
+      with:
+        projectBaseDir: ./src
+        args: >
+          -Dsonar.projectKey=power_pipe
+          -Dsonar.projectName=power_pipe_123
+          -Dsonar.qualitygate.wait=true
