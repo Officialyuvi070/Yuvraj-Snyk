@@ -35,9 +35,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
-           args: >
+          args: >
                -Dsonar.projectKey=power_pipe_123
                -Dsonar.projectName=power_pipe
                -Dsonar.qualitygate.wait=true
                -Dsonar.qualitygate.wait=true
-           run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar 
+          run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar 
