@@ -15,8 +15,7 @@ jobs:
     - name: Setup JDK
       uses: actions/setup-java@v2
       with:
-        distribution: 'adopt'
-        java-version: '11'
+        java-version: '17'
     # Triggering SonarQube analysis as results of it are required by Quality Gate check.
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
