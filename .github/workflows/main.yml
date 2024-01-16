@@ -1,4 +1,4 @@
-name: Build
+name: Snyk
 
 on:
   workflow_dispatch
